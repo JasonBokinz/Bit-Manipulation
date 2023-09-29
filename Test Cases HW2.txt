@@ -1,0 +1,132 @@
+/* bit.c Test Cases */
+
+
+        /* GetBit */
+
+
+    printf("%d\n", GetBit(12, 2)); // Expected output: 1
+    printf("%d\n", GetBit(0, 0)); // Expected output: 0
+    printf("%d\n", GetBit(42, 3)); // Expected output: 1
+    printf("%d\n", GetBit(255, 0)); // Expected output: 1
+    printf("%d\n", GetBit(-1, 0)); // Expected output: 1
+    printf("%d\n", GetBit(-1, 31)); // Expected output: 1
+    printf("%d\n", GetBit(0x80000000, 31)); // Expected output: 1
+
+
+            /* SetBit */
+
+
+    printf("%d\n", SetBit(10, 2)); // Expected output: 14
+    printf("%d\n", SetBit(7, 1)); // Expected output: 7
+    printf("%d\n", SetBit(5, 0)); // Expected output: 5
+    printf("%d\n", SetBit(2, 3)); // Expected output: 10
+    printf("%d\n", SetBit(-7, 4)); // Expected output: -7
+    printf("%d\n", SetBit(0, 31)); // Expected output: -2147483648
+
+
+            /* ClearBit */
+
+
+    printf("%d\n", ClearBit(10, 0)); // Expected output: 10
+    printf("%d\n", ClearBit(15, 2)); // Expected output: 11
+    printf("%d\n", ClearBit(255, 7)); // Expected output: 127
+    printf("%d\n", ClearBit(6, 1)); // Expected output: 4
+    printf("%d\n", ClearBit(8, 3)); // Expected output: 0
+    printf("%d\n", ClearBit(9, 0)); // Expected output: 8
+    printf("%d\n", ClearBit(-16, 4)); // Expected output: -32
+    printf("%d\n", ClearBit(1, 0)); // Expected output: 0
+
+
+            /* Reversbit */
+
+
+    printf("%d\n", Reversbit(0)); // Expected output in hexadecimal to make shorter: 0
+    printf("%d\n", Reversbit(1)); // Expected output in hexadecimal to make shorter: -2147483648
+    printf("%d\n", Reversbit(4)); // Expected output in hexadecimal to make shorter: 536870912
+    printf("%d\n", Reversbit(-1)); // Expected output in hexadecimal to make shorter: -1
+    printf("%d\n", Reversbit(123)); // Expected output in hexadecimal to make shorter: -570425344
+    printf("%d\n", Reversbit(-123)); // Expected output in hexadecimal to make shorter: -1577058305
+
+
+            /* CountBit */
+
+
+    printf("%d\n", CountBit(0)); // Expected output: 0
+    printf("%d\n", CountBit(-1)); // Expected output: 32
+    printf("%d\n", CountBit(1)); // Expected output: 1
+    printf("%d\n", CountBit(-2147483648)); // Expected output: 1
+    printf("%d\n", CountBit(47529922576)); // Expected output: 5
+    printf("%d\n", CountBit(4294967295)); // Expected output: 32
+    printf("%d\n", CountBit(-42)); // Expected output: 29
+    printf("%d\n", CountBit(47514128400)); // Expected output: 4
+
+
+            /* PowerofTwo */
+
+
+    printf("%d\n", PowerofTwo(1)); // Expected output: 1
+    printf("%d\n", PowerofTwo(2)); // Expected output: 1
+    printf("%d\n", PowerofTwo(4)); // Expected output: 1
+    printf("%d\n", PowerofTwo(8)); // Expected output: 1
+    printf("%d\n", PowerofTwo(16)); // Expected output: 1
+    printf("%d\n", PowerofTwo(32)); // Expected output: 1
+    printf("%d\n", PowerofTwo(64)); // Expected output: 1
+
+    printf("%d\n", PowerofTwo(0)); // Expected output: 0
+    printf("%d\n", PowerofTwo(6)); // Expected output: 0
+    printf("%d\n", PowerofTwo(14)); // Expected output: 0
+    printf("%d\n", PowerofTwo(18)); // Expected output: 0
+    printf("%d\n", PowerofTwo(100)); // Expected output: 0
+    printf("%d\n", PowerofTwo(5)); // Expected output: 0
+    printf("%d\n", PowerofTwo(11)); // Expected output: 0
+
+
+/* float.c Test Cases */
+
+
+    printf("%.8e\n", (double)construct_float_sf(0x00, 0x81, 0x300000)); // Expected Output: 5.5 
+    printf("%.8e\n", (double)construct_float_sf(0x01, 0x81, 0x300000)); // Expected Output: -5.5 
+    printf("%.8e\n", (double)construct_float_sf(0x00, 0x7F, 0x200000)); // Expected Output: 1.25 
+    printf("%.8e\n", (double)construct_float_sf(0x01, 0x7F, 0x200000)); // Expected Output: -1.25
+    printf("%.8e\n", (double)construct_float_sf(0x00, 0x89, 0xABCDEF)); // Expected Output: 1374.44
+    printf("%.8e\n", (double)construct_float_sf(0x01, 0x89, 0xABCDEF)); // Expected Output: -1374.44
+    printf("%.8e\n", (double)construct_float_sf(0x00, 0x90, 0x7973C0)); // Expected Output: 255439.0
+    printf("%.8e\n", (double)construct_float_sf(0x01, 0x90, 0x7973C0)); // Expected Output: -255439.0
+    printf("%.8e\n", (double)construct_float_sf(0, 1, 0)); // Expected Output: 1.17549435e-38
+    printf("%.8e\n", (double)construct_float_sf(1, 1, 0)); // Expected Output: -1.17549435e-38
+    printf("%.8e\n", (double)construct_float_sf(0, 0xFE, 0x7FFFFF)); // Expected Output: 3.40282347e+38
+    printf("%.8e\n", (double)construct_float_sf(1, 0xFE, 0x7FFFFF)); // Expected Output: -3.40282347e+38
+    printf("%.8e\n", (double)construct_float_sf(0, 0xFF, 0)); // Expected Output: inf
+    printf("%.8e\n", (double)construct_float_sf(1, 0xFF, 0)); // Expected Output: -inf
+    printf("%.8e\n", (double)construct_float_sf(0, 0xFF, 1)); // Expected Output: nan
+    printf("%.8e\n", (double)construct_float_sf(0, 0, 0)); // Expected Output: 0
+
+
+/* integers.c Test Cases */
+
+
+    repr_convert('S','S', 0x80000000); // Expected Output: 00000000
+    repr_convert('S', '2', 0x80000001); // Expected Output: ffffffff
+    repr_convert('S', '2', 0x80000000); // Expected Output: 00000000
+    repr_convert('2', '2', 0x59f2ca50); // Expected Output: 59f2ca50
+    repr_convert('F', '2', 0x00394812); // Expected Output: error
+    repr_convert('2', 'S', 0x80000000); // Expected Output: undefined
+    repr_convert('2', 'S', 0x00000001); // Expected Output: 00000001
+    repr_convert('2', '2', 0x00000000); // Expected Output: 00000000
+    repr_convert('2', 'S', 0x7FFFFFFF); // Expected Output: 7fffffff
+    repr_convert('S', '2', 0x00000000); // Expected Output: 00000000
+    repr_convert('S', '2', 0x7FFFFFFF); // Expected Output: 7fffffff
+    repr_convert('2', '2', 0xFFFFFFFF); // Expected Output: ffffffff
+    repr_convert('2', 'S', 0xFFFFFFFF); // Expected Output: 80000001
+    repr_convert('2', 'S', 0x00000001); // Expected Output: 00000001
+    repr_convert('S', '2', 0x00000001); // Expected Output: 00000001
+    repr_convert('2', '2', 0x0000000A); // Expected Output: 0000000A
+    repr_convert('S', 'S', 0x0000000A); // Expected Output: 0000000A
+    repr_convert('S', 'S', 0x40000000); // Expected Output: 40000000
+    repr_convert('S', '2', 0x40000000); // Expected Output: 40000000
+    repr_convert('2', 'S', 0xFFFFFFFE); // Expected Output: 80000002
+    repr_convert('S', '2', 0xFFFFFFFE); // Expected Output: 80000002
+    repr_convert('2', 'S', 0x00000002); // Expected Output: 00000002
+    repr_convert('S', '2', 0x00000002); // Expected Output: 00000002
+    repr_convert('X', '2', 0x12345678); // Expected Output: error
+    repr_convert('S', 'X', 0x12345678); // Expected Output: error
